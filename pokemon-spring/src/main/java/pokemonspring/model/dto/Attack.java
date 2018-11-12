@@ -1,18 +1,18 @@
-package pokemonspring.model;
+package pokemonspring.model.dto;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "name")
-public class PokemonName implements Serializable {
+@Table(name = "attack")
+public class Attack implements Serializable {
 
     @Id
-    @Column(name="name_id")
+    @Column(name="attack_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long id;
+    private Long id;
 
-    @Column(name="pokemon_name")
+    @Column(name="attack_name")
     private String name;
 
     public Long getId() {
@@ -23,9 +23,9 @@ public class PokemonName implements Serializable {
         return name;
     }
 
-
     public void setName(String name) {
         this.name = name;
     }
 
+ 
 }
