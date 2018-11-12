@@ -1,6 +1,7 @@
 package pokemonspring.model.dto;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @Entity
@@ -8,23 +9,24 @@ import java.io.Serializable;
 public class Attack implements Serializable {
 
     @Id
-    @Column(name="attack_id")
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long attackId;
 
-    @Column(name="attack_name")
-    private String name;
+    @NotBlank
+    @Column
+    private String attackName;
 
     public Long getId() {
-        return id;
+        return attackId;
     }
 
     public String getName() {
-        return name;
+        return attackName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String attackName) {
+        this.attackName = attackName;
     }
 
  

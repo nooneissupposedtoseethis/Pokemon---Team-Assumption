@@ -1,28 +1,30 @@
 package pokemonspring.model.dto;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @Entity
 @Table(name ="type")
 public class Type implements Serializable{
     @Id
-    @Column(name="type_id")
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long typeId;
 
-    @Column(name="type_name")
-    private String type;
+    @NotBlank
+    @Column
+    private String typeName;
 
     public Long getId() {
-        return id;
+        return typeId;
     }
 
     public String getType() {
-        return type;
+        return typeName;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setType(String typeName) {
+        this.typeName = typeName;
     }
 }
