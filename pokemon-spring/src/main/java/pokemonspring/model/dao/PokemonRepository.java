@@ -2,10 +2,10 @@ package pokemonspring.model.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import pokemonspring.model.dto.PokemonName;
+import pokemonspring.model.dto.Pokemon;
 
 @Repository
-public interface PokemonRepository extends JpaRepository<PokemonName, Long> {
+public interface PokemonRepository extends JpaRepository<Pokemon, Long> {
     /*
       No code is needed in here because it is extending JpaRepository.
       With this here we can Save(), findOne(), findAll(), count(), delete() etc.
