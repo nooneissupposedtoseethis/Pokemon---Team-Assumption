@@ -12,7 +12,6 @@ public class Type implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long typeId;
 
-    @NotBlank
     @Column
     private String typeName;
 
@@ -20,11 +19,11 @@ public class Type implements Serializable{
         return typeId;
     }
 
-    public String getType() {
+    public String getTypeName() {
         return typeName;
     }
 
-    public void setType(String typeName) {
+    public void setTypeName(String typeName) {
         this.typeName = typeName;
     }
 }

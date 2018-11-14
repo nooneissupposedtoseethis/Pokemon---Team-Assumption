@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '2.0.6.RELEASE'
+		springBootVersion = '2.1.0.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -25,18 +25,15 @@ repositories {
 	mavenCentral()
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
 configurations {
 	providedRuntime
 }
 
 dependencies {
+	implementation('org.springframework.boot:spring-boot-starter-data-jpa')
 	implementation('org.springframework.boot:spring-boot-starter-web')
-	implementation ('org.hibernate:hibernate-core:3.6.7.Final')
+	runtimeOnly('org.springframework.boot:spring-boot-devtools')
 	runtimeOnly('mysql:mysql-connector-java')
 	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
-	compile("org.springframework.boot:spring-boot-starter-data-jpa")
 }

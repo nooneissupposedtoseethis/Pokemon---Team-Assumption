@@ -21,12 +21,12 @@ public class PokemonName implements Serializable {
         return nameId;
     }
 
-    public String getName() {
+    public String getPokemonName() {
         return pokemonName;
     }
 
 
-    public void setName(String pokemonName) {
+    public void setPokemonName(String pokemonName) {
         this.pokemonName = pokemonName;
     }
 

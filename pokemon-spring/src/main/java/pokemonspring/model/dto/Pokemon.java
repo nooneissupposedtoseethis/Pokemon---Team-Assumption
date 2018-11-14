@@ -2,25 +2,24 @@ package pokemonspring.model.dto;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class Pokemon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long pokemonId;
 
     @Autowired
     private PokemonName pokemonName;
 
     @Autowired
+    @ManyToMany(mappedBy = "attackName")
     private List<Attack> pokemonAttacks;
 
     @Autowired
+    @ManyToMany(mappedBy = "typeName")
     private List<Type> pokemonTypes;
 
     private String pokemonPicture;

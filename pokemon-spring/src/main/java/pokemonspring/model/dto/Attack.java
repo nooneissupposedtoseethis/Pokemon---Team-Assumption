@@ -13,7 +13,6 @@ public class Attack implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long attackId;
 
-    @NotBlank
     @Column
     private String attackName;
 
@@ -21,11 +20,11 @@ public class Attack implements Serializable {
         return attackId;
     }
 
-    public String getName() {
+    public String getAttackName() {
         return attackName;
     }
 
-    public void setName(String attackName) {
+    public void setAttackName(String attackName) {
         this.attackName = attackName;
     }
 
