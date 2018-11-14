@@ -22,6 +22,7 @@ public class PokemonController {
     public List<Pokemon> listPokemons(){
         return pokemonRepository.findAll();
     }
+
     //Display a chosen pokemon
     @GetMapping("/pokemon/{id}")
     public Optional<Pokemon> displayPokemon(@PathVariable(value = "id") Long pId){
