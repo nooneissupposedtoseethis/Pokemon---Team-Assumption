@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css'
 
-class App extends Component {
-    render() {
+class ItemDisplay extends React.Component {
+    constructor() {
         return (
             <div className="App">
                 <h1>Hello Poke-Wold</h1>
@@ -13,4 +13,4 @@ class App extends Component {
 }
 
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<ItemDisplay />, document.getElementById('root'));
