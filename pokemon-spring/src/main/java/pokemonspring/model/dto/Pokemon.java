@@ -1,51 +1,43 @@
 package pokemonspring.model.dto;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class Pokemon {
     @Id
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long pokemonId;
 
-    @Autowired
-    private PokemonName pokemonName;
+    @Column
+    private String pokemonName;
 
-    @Autowired
-    @ManyToMany(mappedBy = "attackName")
-    private List<Attack> pokemonAttacks;
-
-    @Autowired
-    @ManyToMany(mappedBy = "typeName")
-    private List<Type> pokemonTypes;
-
+    @Column
     private String pokemonPicture;
 
-    public PokemonName getPokemonName() {
+    @ManyToMany
+    @JoinTable(name="pokemon2attack",
+            joinColumns = {@JoinColumn(name="pokemon_id")},
+            inverseJoinColumns = {@JoinColumn(name = "attack_id")}) //Table name and join column names
+    private List<Attack> attacks;
+
+    @ManyToMany
+    @JoinTable(name = "pokemon2type",
+            joinColumns = {@JoinColumn(name="pokemon_id")},
+            inverseJoinColumns = {@JoinColumn(name = "type_id")}) //Table name and join column names
+    private List<Type> types;
+
+    public Long getPokemonId() {
+        return pokemonId;
+    }
+
+    public String getPokemonName() {
         return pokemonName;
     }
 
-    public void setPokemonName(PokemonName pokemonName) {
+    public void setPokemonName(String pokemonName) {
         this.pokemonName = pokemonName;
-    }
-
-    public List<Attack> getPokemonAttacks() {
-        return pokemonAttacks;
-    }
-
-    public void setPokemonAttacks(List<Attack> pokemonAttacks) {
-        this.pokemonAttacks = pokemonAttacks;
-    }
-
-    public List<Type> getPokemonTypes() {
-        return pokemonTypes;
-    }
-
-    public void setPokemonTypes(List<Type> pokemonTypes) {
-        this.pokemonTypes = pokemonTypes;
     }
 
     public String getPokemonPicture() {
@@ -54,5 +46,21 @@ public class Pokemon {
 
     public void setPokemonPicture(String pokemonPicture) {
         this.pokemonPicture = pokemonPicture;
+    }
+
+    public List<Attack> getAttacks() {
+        return attacks;
+    }
+
+    public void setAttacks(List<Attack> attacks) {
+        this.attacks = attacks;
+    }
+
+    public List<Type> getTypes() {
+        return types;
+    }
+
+    public void setTypes(List<Type> types) {
+        this.types = types;
     }
 }
