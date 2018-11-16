@@ -16,11 +16,11 @@ public class Type implements Serializable{
     @Column
     private String typeName;
 
-    @ManyToMany(mappedBy="types") //<-Variable name
-    private List<Pokemon> pokemonNames;
-
+  /*  @ManyToMany(mappedBy="types") //<-Variable name
+    private List<Pokemon> pokemonNames;*/
+/*
     @OneToOne(mappedBy="type") //<- Table name
-    private Attack attack;
+    private Attack attack;*/
 
     public Long getId() {
         return typeId;
@@ -34,19 +34,19 @@ public class Type implements Serializable{
         this.typeName = typeName;
     }
 
-    public List<Pokemon> getPokemonNames() {
+   /* public List<Pokemon> getPokemonNames() {
         return pokemonNames;
     }
 
     public void setPokemonNames(List<Pokemon> pokemonNames) {
         this.pokemonNames = pokemonNames;
-    }
+    }*/
 
-    public Attack getAttack() {
+  /*  public Attack getAttack() {
         return attack;
     }
 
     public void setAttack(Attack attack) {
         this.attack = attack;
-    }
+    }*/
 }

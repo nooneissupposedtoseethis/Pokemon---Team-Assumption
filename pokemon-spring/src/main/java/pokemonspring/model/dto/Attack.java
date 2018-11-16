@@ -17,8 +17,8 @@ public class Attack implements Serializable {
     @Column
     private String attackName;
 
-    @ManyToMany(mappedBy = "attacks") //variable name
-    private List<Pokemon> pokemonNames;
+  /*  @ManyToMany(mappedBy = "attacks") //variable name
+    private List<Pokemon> pokemonNames;*/
 
     @OneToOne
     @JoinColumn(name="attack_id") //table column name
@@ -36,13 +36,13 @@ public class Attack implements Serializable {
         this.attackName = attackName;
     }
 
-    public List<Pokemon> getPokemonNames() {
+ /*   public List<Pokemon> getPokemonNames() {
         return pokemonNames;
     }
 
     public void setPokemonNames(List<Pokemon> pokemonNames) {
         this.pokemonNames = pokemonNames;
-    }
+    }*/
 
     public Type getType() {
         return type;
