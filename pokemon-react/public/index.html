@@ -11,7 +11,7 @@
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <style>
-      .center { margin:auto; width: 15%; padding: 2%; text-align: center;}
+      .center { margin:auto; width: 75%; padding: 2%; text-align: center;}
     </style>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
@@ -28,10 +28,10 @@
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
-    <div style="width:75%;;border: 2px solid black;" class="Center">
-      <div id="ItemDisplay"></div>
-      <h2 id="pokemonName" class="center">Name of Pokemon</h2>
-      <img id="pokeImage" src="favicon.ico" class="center"/>
+    <div style="width:75%;border: 2px solid black;margin:auto;">
+      <div id="root"></div>
+      <h2 id="pokemonName" style="text-align: center">Name of Pokemon</h2>
+      <div class="center" id="pokeImage"><img  src="favicon.ico" /></div>
       <div id="pokeInfo"></div>
     </div>
     <!--
