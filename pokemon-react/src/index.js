@@ -3,47 +3,53 @@ import ReactDOM from 'react-dom';
 import './index.css'
 
 
-const URL ='http://localhost:8080//pokedex//pokemon/3';
+const URL ='http://localhost:8080//pokedex/list';
 
-class Pokemon extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = { 
-            pokeData: [],
-            types: [],
-            attack1: [],
-            attack2:[],
-            error: null,
-            isLoading: true
-        }
-    }
+class Pokemon extends React.Component {
+   state = {
+       isLoading: true,
+       pokeData: [],
+       error: null
+   }
 
-    componentDidMount(){
-       fetch(URL)
-       .then(response => response.json())
-       .then(data =>(
-            this.setState({
-                pokeData: data,
-                types:data.types[0],
-                attack1: data.attacks[0],
-                attack2: data.attacks[1],
-                isLoading: false,
-            }))
-        )
-        .catch(error => this.setState({error, isLoading: false}));
-    }
+   render(){
+       const { isLoading, pokeData, error} = this.state;
+       return ( 
+            <React.Fragment>
+                {error ? <p>{error.message}</p> : null}
 
-    render(){
-      return(
-        <div key={this.state.pokeData.pokemonId}>
-            <h1>{this.state.pokeData.pokemonName}</h1>
-            <img src={this.state.pokeData.pokemonPicture} width="100" alt="here lies your pokemon" />
-            <p>Type: {this.state.types.typeName}</p>
-            <p>Attacks: {this.state.attack1.attackName}, {this.state.attack2.attackName}</p>
-        </div>
-      );
-    }
+                {!isLoading ? (
+                    
+                    pokeData.map(pokeData => {
+                        const { pokemonName,pokemonPicture} = pokeData;
+                        return(
+                            <div key={pokemonName}>
+                                <h1>{pokemonName}</h1>
+                                <img src={pokemonPicture} width="100" alt="here lies your pokemon" />
+                                <p>Type: {pokeData.types[0].typeName}</p>
+                                <p>Attacks: {pokeData.attacks[0].attackName}, {pokeData.attacks[1].attackName}</p>
+                            </div>
+                        );
+                    })
+                ) : (
+                    <h3>Loading...</h3>
+                )}
+            </React.Fragment>
+       );
+   }
+
+   componentDidMount(){
+    fetch(URL)
+    .then(response => response.json())
+    .then(data => 
+         this.setState({
+             pokeData: data,
+             isLoading: false,
+         })
+     )
+     .catch(error => this.setState({error, isLoading: false}));
+   }
+
 }
-
 
 ReactDOM.render(<Pokemon />, document.getElementById('pokemonName'));
